@@ -4,6 +4,7 @@ from sqlalchemy.orm import relationship
 from database import Base
 
 
+
 class Post(Base):
     __tablename__ = "posts"
 
@@ -33,7 +34,7 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     username = Column(String, unique=True, index=True)
     email = Column(String)
-    hashed_password = Column(String)
+    password = Column(String)
     posts = relationship("Post", back_populates="author")
     comments = relationship("Comment", back_populates="user")
 

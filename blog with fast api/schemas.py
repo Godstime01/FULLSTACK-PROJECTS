@@ -1,13 +1,21 @@
-from pydantic import BaseModel, validator
+from pydantic import BaseModel
+from typing import Optional
 import datetime
 
 
 class User(BaseModel):
+
     username: str
+    email:str
     password: str
 
+class UserOutput(BaseModel):
+    id: int
+    username: str
+    email:str
 
 class Post(BaseModel):
+    id: int
     title: str
     body: str
     is_published: bool
@@ -15,8 +23,14 @@ class Post(BaseModel):
 
 
 class Comment(BaseModel):
+    id: int
     post_id: int
     comment: str
-    authod_id: int
-    date_created: datetime.datetime
+    user_id: int
 
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+class DataToken(BaseModel):
+    id:Optional[str] = None
