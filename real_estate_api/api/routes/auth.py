@@ -13,7 +13,7 @@ router = APIRouter(
 async def register_user(user: schema.UserCreate, background_task:BackgroundTasks, db: Session = Depends(get_db)): 
 
     # check if user email exist
-    result = _query.check_user_exist(user.email)
+    result = _query.check_user_exist(db, user.email)
 
     if result: raise HTTPException(status_code= status.HTTP_400_BAD_REQUEST, detail="user email already exist")
 
@@ -28,7 +28,7 @@ async def register_user(user: schema.UserCreate, background_task:BackgroundTasks
     otp_code = utils.generate_otp_code()
     otp_data = schema.OTP
     otp_data.code = otp_code
-    otp_data.user_id = user.id
+    otp_data.user_id = result.id
     
     message = """
 <!DOCTYPE html>
@@ -51,9 +51,9 @@ async def register_user(user: schema.UserCreate, background_task:BackgroundTasks
 </html>
     """.format(user.email, otp_code)
 
-    # utils.send_email(background_task = background_task, subject="Email Verification", recipient=[user.email], message=message )
+    utils.send_email(background_task = background_task, subject="Email Verification", recipient=[user.email], message=message )
 
-    # _query.create_otp_for_user(db, otp=otp_data)
+    _query.create_otp_for_user(db, otp=otp_data)
 
     return { 
         "message": "account created successfully, please verify with your one time password"

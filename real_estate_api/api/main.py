@@ -15,4 +15,4 @@ app = FastAPI(
 def testing():
     return {"ping": "pong"}
 
-# app.include_router(auth.router)
+app.include_router(auth.router)

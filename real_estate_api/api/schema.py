@@ -6,7 +6,7 @@ class UserBase(BaseModel):
 
 
 class UserCreate(UserBase):
-
+    username: str = Field(..., title="user username")
     password: str = Field(..., title = 'user password')
 
 

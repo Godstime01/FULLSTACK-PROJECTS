@@ -14,8 +14,8 @@ class User(Base):
     password = Column(String, nullable=False)
     is_active = Column(Boolean, default=True)
     is_verified = Column(Boolean, default=False)
-    date_joined = Column(TIMESTAMP(timezone=True), server_default=text(' now()'))
-    # user_otp = relationship("User_otp", back_populates="user")
+    # date_joined = Column(TIMESTAMP(timezone=True), server_default=text('now()'))
+    user_otp = relationship("User_otp", back_populates="user")
 
 
 class User_otp(Base):

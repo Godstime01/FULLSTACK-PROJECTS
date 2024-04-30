@@ -1,3 +1,4 @@
+import os
 import pathlib
 from pydantic import BaseSettings
 from dotenv import load_dotenv
@@ -10,10 +11,10 @@ class Settings(BaseSettings):
     # db_password:str
     # db_name:str
 
-    email_username :str
-    email_password :str
-    email_from: str
-    mail_server: str
+    email_username :str = os.getenv("MAIL_USERNAME")
+    email_password :str = os.getenv("MAIL_PASSWORD") 
+    email_from: str = os.getenv("MAIL_FROM")
+    mail_server: str = os.getenv("MAIL_SERVER")
 
     class Config:
         env_file = f"{pathlib.Path(__file__).resolve().parent}/.env"

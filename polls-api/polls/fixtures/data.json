@@ -1,0 +1,94 @@
+[
+    {
+      "model": "auth.user",
+      "pk": 1,
+      "fields": {
+        "username": "user1",
+        "password": "password1"
+      }
+    },
+    {
+      "model": "auth.user",
+      "pk": 2,
+      "fields": {
+        "username": "user2",
+        "password": "password2"
+      }
+    },
+    {
+      "model": "polls.poll",
+      "pk": 1,
+      "fields": {
+        "question": "What is your favorite programming language?",
+        "created_by": 1,
+        "pub_date": "2024-04-30T12:00:00Z"
+      }
+    },
+    {
+      "model": "polls.choice",
+      "pk": 1,
+      "fields": {
+        "poll": 1,
+        "choice_text": "Python"
+      }
+    },
+    {
+      "model": "polls.choice",
+      "pk": 2,
+      "fields": {
+        "poll": 1,
+        "choice_text": "JavaScript"
+      }
+    },
+    {
+      "model": "polls.choice",
+      "pk": 3,
+      "fields": {
+        "poll": 1,
+        "choice_text": "Java"
+      }
+    },
+    {
+      "model": "polls.poll",
+      "pk": 2,
+      "fields": {
+        "question": "What is your favorite color?",
+        "created_by": 2,
+        "pub_date": "2024-04-29T12:00:00Z"
+      }
+    },
+    {
+      "model": "polls.choice",
+      "pk": 4,
+      "fields": {
+        "poll": 2,
+        "choice_text": "Red"
+      }
+    },
+    {
+      "model": "polls.choice",
+      "pk": 5,
+      "fields": {
+        "poll": 2,
+        "choice_text": "Blue"
+      }
+    },
+    {
+      "model": "polls.choice",
+      "pk": 6,
+      "fields": {
+        "poll": 2,
+        "choice_text": "Green"
+      }
+    },
+    {
+      "model": "polls.vote",
+      "pk": 1,
+      "fields": {
+        "choice": 1,
+        "poll": 1,
+        "voted_by": 1
+      }
+    }
+  ]
+  
